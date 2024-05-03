@@ -1,6 +1,7 @@
 import "./App.css";
 import Breadcrumb from "./components/Breadcrumb";
 import FolderData from "./components/FolderData";
+import Sidebar from "./components/Sidebar";
 import UploadButton from "./components/UploadButton";
 import { FolderDataProvider } from "./context/FolderDataContext";
 
@@ -17,20 +18,7 @@ function App() {
         <div className="mid">
           <div className="leftSection">
             <UploadButton />
-            <nav className="sidebar">
-              <div className="item">
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <span className="arrow"></span>
-                  <img
-                    src="logo512.png"
-                    width={20}
-                    height={20}
-                    alt="drive-icon"
-                  />
-                </div>
-                <span>Home</span>
-              </div>
-            </nav>
+            <Sidebar />
           </div>
           <div className="rightSection">
             <Breadcrumb />
