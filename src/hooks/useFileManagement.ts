@@ -1,14 +1,16 @@
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import { FolderDataContext, Types } from "../context/FolderDataContext";
-// TODO: add validation for same name file and folder
 
 const useFileManagement = () => {
   const { folders, currentFolderId, setCurrentFolderId, setFolders } =
     useContext(FolderDataContext);
 
-  const getFolders = () => folders;
+  const getFolders = useCallback(() => folders, [folders]);
 
-  const getCurrentFolderId = () => currentFolderId;
+  const getCurrentFolderId = useCallback(
+    () => currentFolderId,
+    [currentFolderId]
+  );
 
   const updateCurrentFolderId = (id: string) => setCurrentFolderId(id);
 

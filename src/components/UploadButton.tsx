@@ -6,8 +6,6 @@ import useFileManagement from "../hooks/useFileManagement";
 import { Types } from "../context/FolderDataContext";
 import { Button, Input } from "@mui/material";
 
-// TODO: update current folder's lastModify
-
 const UploadButton = () => {
   const [open, setOpen] = useState(false);
   const [nameModal, setNameModal] = useState(false);
