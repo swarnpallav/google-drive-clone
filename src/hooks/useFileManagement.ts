@@ -1,5 +1,7 @@
 import { useCallback, useContext } from "react";
 import { FolderDataContext, Types } from "../context/FolderDataContext";
+import { checkWithSameName } from "../utils/validation";
+import toast from "react-hot-toast";
 
 const useFileManagement = () => {
   const { folders, currentFolderId, setCurrentFolderId, setFolders } =
@@ -17,7 +19,16 @@ const useFileManagement = () => {
   const add = (data: any) => {
     let updatedData: any;
     const addData = (obj: any) => {
+      if (obj.type === Types.FILE) {
+        return;
+      }
       if (obj.type === Types.FOLDER && obj.id === currentFolderId) {
+        if (checkWithSameName(obj.contents, data)) {
+          toast.error(
+            `${data.type.toLowerCase()} with same name already exists!`
+          );
+          return;
+        }
         obj.contents = [...obj.contents, data];
         updatedData = folders;
         return;
